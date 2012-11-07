@@ -7,8 +7,11 @@ $tpl = $modx->getOption('tpl',$scriptProperties,'rowTpl');
 $sort = $modx->getOption('sort',$scriptProperties,'name');
 $dir = $modx->getOption('dir',$scriptProperties,'ASC');
 
-$output = '';
- 
-return $output;
+$output = 'Test: ';
+//$m = $modx->getManager();
+//$output .= $m->createObjectContainer('VoteLangs') ? 'Table created.' : 'Table not created.';
+//$output .= $m->createObjectContainer('VoteCategory') ? 'Table created.' : 'Table not created.';
+//$output .= $m->createObjectContainer('VoteQuestion') ? 'Table created.' : 'Table not created.';
+//$output .= $m->createObjectContainer('VoteAnswer') ? 'Table created.' : 'Table not created.';
 
-?>
+return $output;

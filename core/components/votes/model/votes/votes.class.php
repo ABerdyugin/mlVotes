@@ -30,7 +30,7 @@ class Votes {
 				'assetsUrl' => $assetsUrl,
 				'cnnectorUrl' => $assetsUrl.'connector.php',
 		), $config);
-		
+		$this->modx->addPackage('votes',$this->config['modelPath']);
 	}
 }
 

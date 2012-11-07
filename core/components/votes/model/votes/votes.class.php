@@ -28,7 +28,7 @@ class Votes {
 				'jsUrl' => $assetsUrl.'js/',
 				'cssUrl' => $assetsUrl.'css/',
 				'assetsUrl' => $assetsUrl,
-				'cnnectorUrl' => $assetsUrl.'connector.php',
+				'connectorUrl' => $assetsUrl.'connector.php',
 		), $config);
 		$this->modx->addPackage('votes',$this->config['modelPath']);
 	}

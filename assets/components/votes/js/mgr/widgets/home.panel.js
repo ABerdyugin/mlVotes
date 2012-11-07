@@ -27,7 +27,6 @@ Votes.panel.Home = function(config) {
             }]
         }]
     });
-		console.log(config);
     Votes.panel.Home.superclass.constructor.call(this,config);
 };
 Ext.extend(Votes.panel.Home,MODx.Panel);

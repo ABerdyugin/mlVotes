@@ -28,7 +28,6 @@ Votes.grid.Votes = function(config) {
             ,editor: { xtype: 'textfield' }
         }]
     });
-		console.log(config);
     Votes.grid.Votes.superclass.constructor.call(this,config)
 };
 Ext.extend(Votes.grid.Votes,MODx.grid.Grid);

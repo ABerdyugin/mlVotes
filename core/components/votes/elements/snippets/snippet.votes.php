@@ -22,5 +22,4 @@ foreach ($langs as $lang) {
     $output .= $vote->getChunk($tpl,$langsArray);
 }
 return $output;
-
 ?>

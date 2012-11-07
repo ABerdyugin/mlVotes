@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="votes" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+
+	<object class="VoteLangs" table="vote_langs" extends="xPDOSimpleObject">
+		<field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+		<field key="short" dbtype="varchar" precision="3" phptype="string" null="false" default="" index="index"/>
+		
+		<composite alias="LangCategoty" class="VoteCategory" local="id" foreign="lang" cardinality="many" owner="local" />
+		<composite alias="LangQuestion" class="VoteQuestion" local="id" foreign="lang" cardinality="many" owner="local" />
+		<composite alias="LangAnswer" class="VoteAnswer" local="id" foreign="lang" cardinality="many" owner="local" />
+	</object>
+
+	<object class="VoteCategory" table="vote_category" extends="xPDOSimpleObject">
+		<field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default="" index="index" />
+		<field key="lang" dbtype="int" precision="11" phptype="integer" null="false" default="" />
+
+		<composite alias="Question" class="VoteQuestion" local="id" foreign="category" cardinality="many" owner="local" />
+		<agregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
+	</object>
+
+	<object class="VoteQuestion" table="vote_question" extends="xPDOSimpleObject">
+		<field key="category" dbtype="int" precision="11" attributes="unsigned" phptype="integer" null="false" index="index" />
+		<field key="question" dbtype="varchar" precision="255" phptype="string" null="false" index="index" />
+		<field key="lang" dbtype="int" precision="11" phptype="string" null="false" default="" />
+		<field key="pubdate" dbtype="datetime" phptype="datetime" null="true" default="null" index="index" />
+		<field key="unpubdate" dbtype="datetime" phptype="datetime" null="true" default="null" index="index" />
+		<field key="count" dbtype="int" precision="11" phptype="string" null="false" default="" />
+		<field key="hide" dbtype="int" precision="1" attributes="unsigned" phptype="boolean" null="false" default="0" index="index" />
+		
+		<agregate alias="Category" class="VoteCategory" local="category" foreign="id" cardinality="many" owner="foreign"  />
+		<agregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
+	</object>
+
+	<object class="VoteAnswer" table="vote_answer" extends="xPDOSimpleObject">
+		<field key="question" dbtype="int" precision="255" phptype="integer" null="false" index="index" />
+		<field key="answer" dbtype="varchar" precision="255" phptype="string" null="false" default="" index="index" />
+		<field key="lang" dbtype="int" precision="11" phptype="string" null="false" default="" />
+		<field key="count" dbtype="int" precision="11" phptype="string" null="false" default="" />
+
+		<agregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
+		<agregate alias="Question" class="VoteQuestion" local="question" foreign="id" cardinality="many" owner="foreign"  />
+	</object>
+
+</model>

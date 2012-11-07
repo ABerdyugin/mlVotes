@@ -24,7 +24,7 @@ class Votes {
 				'modelPath' => $basePath.'model/',
 				'processorsPath' => $basePath.'processors/',
 				'templatesPath' => $basePath.'templates/',
-				'chunksPath' => $basePath.'chunks/',
+				'chunksPath' => $basePath.'elements/chunks/',
 				'jsUrl' => $assetsUrl.'js/',
 				'cssUrl' => $assetsUrl.'css/',
 				'assetsUrl' => $assetsUrl,
@@ -32,6 +32,35 @@ class Votes {
 		), $config);
 		$this->modx->addPackage('votes',$this->config['modelPath']);
 	}
+	public function getChunk($name,$properties = array()) {
+    $chunk = null;
+    if (!isset($this->chunks[$name])) {
+        $chunk = $this->_getTplChunk($name);
+        if (empty($chunk)) {
+            $chunk = $this->modx->getObject('modChunk',array('name' => $name));
+            if ($chunk == false) return false;
+        }
+        $this->chunks[$name] = $chunk->getContent();
+    } else {
+        $o = $this->chunks[$name];
+        $chunk = $this->modx->newObject('modChunk');
+        $chunk->setContent($o);
+    }
+    $chunk->setCacheable(false);
+    return $chunk->process($properties);
+}
+ 
+private function _getTplChunk($name,$postfix = '.chunk.tpl') {
+    $chunk = false;
+    $f = $this->config['chunksPath'].strtolower($name).$postfix;
+    if (file_exists($f)) {
+        $o = file_get_contents($f);
+        $chunk = $this->modx->newObject('modChunk');
+        $chunk->set('name',$name);
+        $chunk->setContent($o);
+    }
+    return $chunk;
+}
 }
 
 ?>

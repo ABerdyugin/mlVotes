@@ -13,5 +13,14 @@ $output = 'Test: ';
 //$output .= $m->createObjectContainer('VoteCategory') ? 'Table created.' : 'Table not created.';
 //$output .= $m->createObjectContainer('VoteQuestion') ? 'Table created.' : 'Table not created.';
 //$output .= $m->createObjectContainer('VoteAnswer') ? 'Table created.' : 'Table not created.';
+$c = $modx->newQuery('VoteLangs');
+$c->sortby($sort,$dir);
+$langs = $modx->getCollection('VoteLangs',$c);
 
+foreach ($langs as $lang) {
+    $langsArray = $lang->toArray();
+    $output .= $vote->getChunk($tpl,$langsArray);
+}
 return $output;
+
+?>

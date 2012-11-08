@@ -12,15 +12,40 @@ Votes.panel.Home = function(config) {
             xtype: 'modx-tabs'
             ,defaults: { border: false ,autoHeight: true }
             ,border: true
-            ,items: [{
-                title: _('votes')
+            ,items: [
+						{
+                title: _('votes.question')
                 ,defaults: { autoHeight: true }
                 ,items: [{
-                    html: '<p>'+_('votes.management_desc')+'</p>'
+                    html: '<p>'+_('votes.question.desc')+'</p>'
                     ,border: false
                     ,bodyCssClass: 'panel-desc'
                 },{
-                    xtype: 'votes-grid-votes'
+                    xtype: 'votes-grid-vote-question'
+                    ,cls: 'main-wrapper'
+                    ,preventRender: true
+								}]
+            },{
+                title: _('votes.category')
+                ,defaults: { autoHeight: true }
+                ,items: [{
+                    html: '<p>'+_('votes.category.desc')+'</p>'
+                    ,border: false
+                    ,bodyCssClass: 'panel-desc'
+                },{
+                    xtype: 'votes-grid-vote-category'
+                    ,cls: 'main-wrapper'
+                    ,preventRender: true
+								}]
+            },{
+                title: _('votes.langs')
+                ,defaults: { autoHeight: true }
+                ,items: [{
+                    html: '<p>'+_('votes.langs.desc')+'</p>'
+                    ,border: false
+                    ,bodyCssClass: 'panel-desc'
+                },{
+                    xtype: 'votes-grid-vote-langs'
                     ,cls: 'main-wrapper'
                     ,preventRender: true
                 }]

@@ -24,5 +24,25 @@ $_lang['votes.management_desc'] = 'Manage your votes here. You can edit them by 
 $_lang['votes.name'] = 'Name';
 $_lang['votes.search...'] = 'Search...';
 $_lang['votes.top_downloaded'] = 'Top Downloaded Votes';
+$_lang['votes.langs'] = 'Языки';
+$_lang['votes.langs.desc'] = 'Управление доступными языками для опроса';
+$_lang['votes.langs.name'] = 'Язык';
+$_lang['votes.langs.short'] = 'Сокращение';
+$_lang['votes.langs.update'] = 'Изменить язык';
+$_lang['votes.langs.delete'] = 'Удалить язык';
+
+$_lang['votes.category'] = 'Категории';
+$_lang['votes.category.desc'] = 'Управление категориями опросов';
+$_lang['votes.category.name'] = 'Категория';
+$_lang['votes.category.lang'] = 'Язык категории';
+$_lang['votes.category.update'] = 'Изменить категорию';
+$_lang['votes.category.delete'] = 'Удалить категорию';
+
+$_lang['votes.question'] = 'Опросы';
+$_lang['votes.question.desc'] = 'Управление опросами';
+$_lang['votes.question.name'] = 'Опрос';
+$_lang['votes.question.lang'] = 'Язык опроса';
+$_lang['votes.question.update'] = 'Изменить опрос';
+$_lang['votes.question.delete'] = 'Удалить опрос';
 
 ?>

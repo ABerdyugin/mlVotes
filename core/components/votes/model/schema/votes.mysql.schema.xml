@@ -15,7 +15,7 @@
 		<field key="lang" dbtype="int" precision="11" phptype="integer" null="false" default="" />
 
 		<composite alias="Question" class="VoteQuestion" local="id" foreign="category" cardinality="many" owner="local" />
-		<agregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
+		<aggregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
 	</object>
 
 	<object class="VoteQuestion" table="vote_question" extends="xPDOSimpleObject">
@@ -27,8 +27,8 @@
 		<field key="count" dbtype="int" precision="11" phptype="string" null="false" default="" />
 		<field key="hide" dbtype="int" precision="1" attributes="unsigned" phptype="boolean" null="false" default="0" index="index" />
 		
-		<agregate alias="Category" class="VoteCategory" local="category" foreign="id" cardinality="many" owner="foreign"  />
-		<agregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
+		<aggregate alias="Category" class="VoteCategory" local="category" foreign="id" cardinality="many" owner="foreign"  />
+		<aggregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
 	</object>
 
 	<object class="VoteAnswer" table="vote_answer" extends="xPDOSimpleObject">
@@ -37,8 +37,8 @@
 		<field key="lang" dbtype="int" precision="11" phptype="string" null="false" default="" />
 		<field key="count" dbtype="int" precision="11" phptype="string" null="false" default="" />
 
-		<agregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
-		<agregate alias="Question" class="VoteQuestion" local="question" foreign="id" cardinality="many" owner="foreign"  />
+		<aggregate alias="Language" class="VoteLangs" local="lang" foreign="id" cardinality="many" owner="foreign"  />
+		<aggregate alias="Question" class="VoteQuestion" local="question" foreign="id" cardinality="many" owner="foreign"  />
 	</object>
 
 </model>
